@@ -1,0 +1,26 @@
+{
+  "name": "ancient",
+  "version": "1.0.0",
+  "description": "a test for ancient gaming",
+  "main": "index.js",
+  "scripts": {
+    "open" : "Cypress open",
+    "test" : "Cypress run -s '**.cy.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikzerafa/ancient.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "mikhail zerafa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikzerafa/ancient/issues"
+  },
+  "homepage": "https://github.com/mikzerafa/ancient#readme",
+  "dependencies": {
+    "cypress": "^12.7.0"
+  }
+}
