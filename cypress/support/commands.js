@@ -126,3 +126,96 @@ Cypress.Commands.add('MovingSliderUpdatesChanceField', () => {
         })
     })
 })
+
+//Inputs
+
+Cypress.Commands.add('InputFieldsAreVisible', () => {
+    roll.get.thresholdField().IsVisible()
+    roll.get.multiplierField().IsVisible()
+    roll.get.chanceField().IsVisible()
+    roll.get.slider().IsVisible()
+})
+
+Cypress.Commands.add('ChangingthresholdUpdatesInputFields', () => {
+    cy.InputFieldsUpdatedWhenRunningFunction(() => {cy.IncreaseThreshold()})
+})
+
+Cypress.Commands.add('ChangingMultiplierUpdatesInputFields', () => {
+    cy.InputFieldsUpdatedWhenRunningFunction(() => {cy.IncreaseMultiplier()})
+})
+
+Cypress.Commands.add('ChangingChanceUpdatesInputFields', () => {
+    cy.InputFieldsUpdatedWhenRunningFunction(() => {cy.IncreaseChance()})
+})
+
+
+Cypress.Commands.add('IncreaseThreshold', () => {
+    roll.get.thresholdField().invoke('val').then(val = val+1)
+})
+
+Cypress.Commands.add('DecreaseThreshold', () => {
+    roll.get.thresholdField().invoke('val').then(val = val-1)
+})
+
+Cypress.Commands.add('IncreaseMultipler', () => {
+    roll.get.multiplierField().invoke('val').then(val = val + 1)
+})
+
+Cypress.Commands.add('DecreaseMultiplier', () => {
+    roll.get.multiplierField().invoke('val').then(val = val -1)
+})
+
+Cypress.Commands.add('IncreaseChance', () => {
+    roll.get.chanceField().invoke('val').then(val = val + 1)
+})
+
+Cypress.Commands.add('DecreaseChance', () => {
+    roll.get.chanceField().invoke('val').then(val = val -1)
+})
+
+
+Cypress.Commands.add('InputFieldsUpdatedWhenRunningFunction', (fun) => {
+    roll.get.thresholdField().invoke('val').then((threshold) => {
+        const thresholdOriginal = threshold
+        roll.get.multiplierField().invoke('val').then((multiplier) => {
+            const multiplierOrginal = multiplier;
+            roll.get.chanceField().invoke('val').then((chance) => {
+                const chanceOriginal = chance
+                roll.get.slider().invoke('text').then((slider) => {
+                    const sliderOriginal = slider
+
+                    //Run the function
+                    fun()
+
+                    roll.get.thresholdField().invoke('val').then((threshold) => {
+                        const thresholdNew = threshold
+                        roll.get.multiplierField().invoke('val').then((multiplier) => {
+                            const multiplierNew  = multiplier;
+                            roll.get.chanceField().invoke('val').then((chance) => {
+                                const chanceNew = chance
+                                roll.get.slider().invoke('text').then((slider) => {
+                                    const sliderNew = slider
+
+
+                                    //Test that values arent equal
+
+                                    cy.wrap(thresholdOriginal).should('not.eq', thresholdNew);
+                                    cy.wrap(multiplierOrginal).should('not.eq', multiplierNew);
+                                    cy.wrap(chanceOriginal).should('not.eq', chanceNew);
+                                    cy.wrap(sliderOriginal).should('not.eq', sliderNew);
+
+                                })
+                            })
+                        })
+                    })
+
+
+                })
+            })
+        })
+    })
+  
+})
+
+
+
