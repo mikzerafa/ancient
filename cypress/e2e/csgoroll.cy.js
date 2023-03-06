@@ -19,14 +19,22 @@ describe('CS Go Roll Tests', () => {
   })
 
   it('Should update inputs when updating other inputs', () => {
-
+      cy.ChangingthresholdUpdatesInputFields()
+      cy.ChangingMultiplierUpdatesInputFields()
+      cy.ChangingChanceUpdatesInputFields()
   })
 
-  it('Should Update button Text when updatinhg Rolls Count', () => {
-
+  it('Should Update button Text when updating Rolls Count', () => {
+      //Im not sure which text is being referred to here
   })
 
   it('Should show empty list of bets when intercepting api and mocking response', () => {
+      cy.intercept('POST','/graphql?operationName=DiceBets',{
+        body:{
 
+        }
+      })
+
+      //Check if bets are empty
   })
 })
