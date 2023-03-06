@@ -1,0 +1,1 @@
+{"version":3,"file":"jsonDeconstructed.d.ts","sourceRoot":"","sources":["../lib/jsonDeconstructed.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,MAAM,EAAE,MAAM,UAAU,CAAC;AAClC,OAAO,EAAE,WAAW,EAAE,MAAM,eAAe,CAAC;AAC5C,qBAAa,iBAAiB;IAC1B,QAAQ,CAAC,QAAQ,EAAE,WAAW,CAAC,MAAM,EAAE,MAAM,CAAC,CAAC;gBAEnC,QAAQ,EAAE,WAAW,CAAC,MAAM,EAAE,MAAM,CAAC;CAKpD"}

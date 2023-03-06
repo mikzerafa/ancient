@@ -20,7 +20,7 @@ const get = {
     thresholdField: () => get.betFormSection().find('input[data-test="treshold"]'),
     multiplierField: () => get.betFormSection().find('input[data-test="multiplier"]'),
     chanceField: () => get.betFormSection().find('input[data-test="chance"]'),
-    slider: () => get.sliderSection().find('div[style*="var(--success)"'),
+    slider: () => get.sliderSection().find('div[style*="var(--success)"').eq(0).parent().parent().find('span[class^="range-tooltip"]'),
     RollDiceButton: () => get.rollDiceSection().find('button[type="submit"]')
 }
 
